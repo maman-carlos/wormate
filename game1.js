@@ -71,12 +71,12 @@
         const OBFUSCATING_BASE_64_PREFIX = "UxFdVMwNFNwN0wzODEybV",
         encode = e => OBFUSCATING_BASE_64_PREFIX + btoa(unescape(encodeURIComponent(JSON.stringify(e))));
         function decode$1(e) {
-			//console.log(Base64.encode(OBFUSCATING_BASE_64_PREFIX))
+			console.log(e)
 			//return JSON.parse(decodeURIComponent(escape(Base64.decode(e.replace(OBFUSCATING_BASE_64_PREFIX, "")))));
-			const base64String = OBFUSCATING_BASE_64_PREFIX.split(',')[1] || OBFUSCATING_BASE_64_PREFIX;
+			const base64String = e.split(',')[1] || e;
 			const cleanString = base64String.replace(/\s/g, ''); 
 	
-            return JSON.parse(decodeURIComponent(escape(atob(e.replace(cleanString, "")))))
+            return JSON.parse(decodeURIComponent(escape(atob(cleanString.replace(OBFUSCATING_BASE_64_PREFIX, "")))))
         }
         var version = "0.4.2";
         const APP_ENV = "production",
